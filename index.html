@@ -1,131 +1,3406 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Empire Furnitures and Interior Fittings | Premium Carpentry</title>
-    <!-- Tailwind CSS Styling Engine -->
-    <script src="https://tailwindcss.com"></script>
-    <!-- FontAwesome Vector Icons -->
-    <link rel="stylesheet" href="https://cloudflare.com">
-</head>
-<body class="bg-stone-50 text-stone-800 font-sans antialiased">
 
-    <!-- Header / Navigation -->
-    <header class="sticky top-0 z-50 bg-white shadow-sm border-b border-stone-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <div class="flex items-center gap-2">
-                <i class="fa-solid fa-couch text-amber-700 text-2xl"></i>
-                <span class="text-xl font-bold tracking-tight text-stone-900 uppercase">Empire Furnitures</span>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Empire Furnitures & Interior Fittings — Luxury furniture, custom interiors, kitchens, wardrobes and commercial interior solutions.">
+
+    <meta name="theme-color" content="#0b0b0b">
+
+    <title>Empire Furnitures & Interior Fittings</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Montserrat", sans-serif;
+            background: #0b0b0b;
+            color: #f4f0e8;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        img {
+            width: 100%;
+            display: block;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button,
+        input,
+        textarea,
+        select {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        :root {
+            --black: #0b0b0b;
+            --black-2: #111111;
+            --black-3: #171717;
+            --gold: #c9a35d;
+            --gold-light: #e2c27d;
+            --cream: #f4f0e8;
+            --muted: #a7a29a;
+            --line: rgba(201, 163, 93, 0.22);
+        }
+
+        ::selection {
+            background: var(--gold);
+            color: #000;
+        }
+
+        /* =====================================================
+           LOADER
+        ===================================================== */
+
+        .loader {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            background: #080808;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.7s ease, visibility 0.7s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-inner {
+            text-align: center;
+        }
+
+        .loader-logo {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 52px;
+            letter-spacing: 7px;
+            color: var(--gold);
+        }
+
+        .loader-line {
+            width: 150px;
+            height: 1px;
+            background: var(--gold);
+            margin: 15px auto;
+            animation: loaderLine 1.5s infinite ease-in-out;
+        }
+
+        .loader-text {
+            font-size: 10px;
+            letter-spacing: 4px;
+            color: #777;
+            text-transform: uppercase;
+        }
+
+        @keyframes loaderLine {
+            0%, 100% {
+                transform: scaleX(0.25);
+                opacity: 0.4;
+            }
+
+            50% {
+                transform: scaleX(1);
+                opacity: 1;
+            }
+        }
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 5000;
+            transition: 0.4s ease;
+        }
+
+        header.scrolled {
+            background: rgba(8, 8, 8, 0.96);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .navbar {
+            width: min(1280px, 92%);
+            margin: auto;
+            height: 88px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+        }
+
+        .logo-mark {
+            width: 42px;
+            height: 42px;
+            border: 1px solid var(--gold);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: var(--gold);
+            font-family: "Cormorant Garamond", serif;
+            font-size: 22px;
+        }
+
+        .logo-text strong {
+            display: block;
+            font-family: "Cormorant Garamond", serif;
+            font-size: 25px;
+            letter-spacing: 3px;
+            color: white;
+            line-height: 1;
+        }
+
+        .logo-text span {
+            display: block;
+            margin-top: 5px;
+            font-size: 7px;
+            letter-spacing: 2.2px;
+            color: var(--gold);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 33px;
+        }
+
+        .nav-links a {
+            position: relative;
+            color: #ddd;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            padding: 12px 18px;
+            border: 1px solid var(--gold);
+            color: var(--gold) !important;
+        }
+
+        .nav-cta::after {
+            display: none;
+        }
+
+        .nav-cta:hover {
+            background: var(--gold);
+            color: #000 !important;
+        }
+
+        .menu-btn {
+            width: 38px;
+            height: 38px;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: transparent;
+            color: white;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(0,0,0,0.92) 0%,
+                    rgba(0,0,0,0.72) 45%,
+                    rgba(0,0,0,0.30) 100%
+                ),
+                url("https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=2200&q=90")
+                center/cover;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(
+                    transparent 70%,
+                    rgba(0,0,0,0.9)
+                );
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            width: min(1280px, 92%);
+            margin: auto;
+            padding-top: 100px;
+        }
+
+        .eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+
+            color: var(--gold);
+            font-size: 10px;
+            letter-spacing: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+
+            animation: fadeUp 1s 0.2s both;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 45px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .hero h1 {
+            max-width: 800px;
+            margin: 24px 0;
+
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(55px, 7vw, 105px);
+            line-height: 0.9;
+            font-weight: 500;
+
+            animation: fadeUp 1s 0.4s both;
+        }
+
+        .hero h1 em {
+            color: var(--gold);
+            font-style: normal;
+        }
+
+        .hero-description {
+            max-width: 570px;
+            color: #c2beb6;
+            font-size: 14px;
+            line-height: 1.9;
+
+            animation: fadeUp 1s 0.6s both;
+        }
+
+        .hero-actions {
+            margin-top: 34px;
+
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+
+            animation: fadeUp 1s 0.8s both;
+        }
+
+        .btn {
+            min-height: 48px;
+            padding: 13px 25px;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+
+            font-size: 10px;
+            letter-spacing: 1.8px;
+            font-weight: 600;
+            text-transform: uppercase;
+
+            transition: 0.35s;
+        }
+
+        .btn-gold {
+            background: var(--gold);
+            color: #080808;
+            border: 1px solid var(--gold);
+        }
+
+        .btn-gold:hover {
+            background: var(--gold-light);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(201,163,93,0.2);
+        }
+
+        .btn-outline {
+            border: 1px solid rgba(255,255,255,0.35);
+            color: white;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            transform: translateY(-3px);
+        }
+
+        .hero-scroll {
+            position: absolute;
+            z-index: 3;
+            bottom: 35px;
+            left: 4%;
+
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            color: #888;
+            font-size: 9px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+
+            animation: fadeUp 1s 1s both;
+        }
+
+        .scroll-line {
+            width: 45px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        /* =====================================================
+           ANIMATIONS
+        ===================================================== */
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(35px);
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 {
+            transition-delay: 0.1s;
+        }
+
+        .delay-2 {
+            transition-delay: 0.2s;
+        }
+
+        .delay-3 {
+            transition-delay: 0.3s;
+        }
+
+        /* =====================================================
+           GENERAL
+        ===================================================== */
+
+        section {
+            padding: 115px 0;
+        }
+
+        .container {
+            width: min(1180px, 92%);
+            margin: auto;
+        }
+
+        .section-header {
+            margin-bottom: 55px;
+        }
+
+        .section-header.center {
+            text-align: center;
+        }
+
+        .section-label {
+            color: var(--gold);
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            margin-top: 12px;
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(45px, 5vw, 70px);
+            line-height: 0.95;
+            font-weight: 500;
+        }
+
+        .section-description {
+            max-width: 620px;
+            margin-top: 20px;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .center .section-description {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* =====================================================
+           INTRO
+        ===================================================== */
+
+        .intro {
+            background: var(--black-2);
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 0.85fr 1.15fr;
+            gap: 90px;
+            align-items: center;
+        }
+
+        .intro-image {
+            position: relative;
+        }
+
+        .intro-image img {
+            height: 590px;
+            object-fit: cover;
+        }
+
+        .intro-image::before {
+            content: "";
+            position: absolute;
+            top: -18px;
+            left: -18px;
+            width: 100px;
+            height: 100px;
+            border-top: 1px solid var(--gold);
+            border-left: 1px solid var(--gold);
+        }
+
+        .intro-image::after {
+            content: "";
+            position: absolute;
+            right: -18px;
+            bottom: -18px;
+            width: 100px;
+            height: 100px;
+            border-right: 1px solid var(--gold);
+            border-bottom: 1px solid var(--gold);
+        }
+
+        .intro-copy h2 {
+            margin-top: 12px;
+            font-family: "Cormorant Garamond", serif;
+            font-size: 57px;
+            line-height: 0.95;
+            font-weight: 500;
+        }
+
+        .intro-copy h2 span {
+            color: var(--gold);
+        }
+
+        .intro-copy p {
+            margin-top: 22px;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .intro-points {
+            margin-top: 35px;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+        }
+
+        .intro-point {
+            padding-top: 18px;
+            border-top: 1px solid var(--line);
+        }
+
+        .intro-point strong {
+            display: block;
+            font-family: "Cormorant Garamond", serif;
+            color: var(--gold);
+            font-size: 25px;
+            font-weight: 500;
+        }
+
+        .intro-point span {
+            display: block;
+            margin-top: 4px;
+            color: #999;
+            font-size: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* =====================================================
+           SERVICES
+        ===================================================== */
+
+        .services {
+            background: #0d0d0d;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--line);
+            border: 1px solid var(--line);
+        }
+
+        .service {
+            background: var(--black-2);
+            padding: 42px 35px;
+            min-height: 270px;
+            position: relative;
+            overflow: hidden;
+            transition: 0.4s;
+        }
+
+        .service::before {
+            content: "";
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            right: -50px;
+            top: -50px;
+            border-radius: 50%;
+            border: 1px solid var(--line);
+            transition: 0.4s;
+        }
+
+        .service:hover {
+            background: #151515;
+        }
+
+        .service:hover::before {
+            transform: scale(2.5);
+        }
+
+        .service-number {
+            font-family: "Cormorant Garamond", serif;
+            color: var(--gold);
+            font-size: 17px;
+        }
+
+        .service-icon {
+            font-size: 27px;
+            margin: 28px 0 18px;
+        }
+
+        .service h3 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 30px;
+            font-weight: 500;
+        }
+
+        .service p {
+            margin-top: 10px;
+            color: #898989;
+            font-size: 11px;
+            line-height: 1.8;
+        }
+
+        /* =====================================================
+           CATALOGUE
+        ===================================================== */
+
+        .catalogue {
+            background: var(--black-2);
+        }
+
+        .catalogue-top {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .filter-btn {
+            border: 1px solid #333;
+            background: transparent;
+            color: #999;
+            padding: 10px 15px;
+
+            font-size: 9px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+
+            transition: 0.3s;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            border-color: var(--gold);
+            color: var(--gold);
+            background: rgba(201,163,93,0.05);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .product-card {
+            background: #111;
+            border: 1px solid #222;
+            overflow: hidden;
+            transition: 0.4s;
+        }
+
+        .product-card:hover {
+            border-color: var(--line);
+            transform: translateY(-7px);
+        }
+
+        .product-image {
+            height: 330px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.08);
+        }
+
+        .product-category {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+
+            padding: 7px 10px;
+            background: rgba(0,0,0,0.78);
+
+            color: var(--gold);
+            font-size: 8px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .product-info {
+            padding: 22px;
+        }
+
+        .product-info h3 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 28px;
+            font-weight: 500;
+        }
+
+        .product-info p {
+            margin: 5px 0 18px;
+            color: #777;
+            font-size: 11px;
+        }
+
+        .product-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-price {
+            color: var(--gold);
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+
+        .product-btn {
+            border: 0;
+            background: transparent;
+            color: white;
+            font-size: 9px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .product-btn:hover {
+            color: var(--gold);
+        }
+
+        /* =====================================================
+           FEATURED BANNER
+        ===================================================== */
+
+        .feature-banner {
+            min-height: 580px;
+
+            display: flex;
+            align-items: center;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(0,0,0,0.88),
+                    rgba(0,0,0,0.35)
+                ),
+                url("https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=2200&q=90")
+                center/cover fixed;
+        }
+
+        .feature-content {
+            max-width: 600px;
+        }
+
+        .feature-content h2 {
+            margin: 15px 0 20px;
+
+            font-family: "Cormorant Garamond", serif;
+            font-size: clamp(50px, 6vw, 80px);
+            line-height: 0.9;
+            font-weight: 500;
+        }
+
+        .feature-content p {
+            color: #bbb;
+            font-size: 13px;
+            max-width: 500px;
+        }
+
+        /* =====================================================
+           GALLERY
+        ===================================================== */
+
+        .gallery {
+            background: #0d0d0d;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr 1.1fr;
+            grid-template-rows: 300px 300px;
+            gap: 12px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-item.large {
+            grid-row: span 2;
+        }
+
+        .gallery-item img {
+            height: 100%;
+            object-fit: cover;
+            transition: 0.7s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.07);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+
+            display: flex;
+            align-items: flex-end;
+
+            padding: 25px;
+
+            background: linear-gradient(
+                transparent 45%,
+                rgba(0,0,0,0.8)
+            );
+
+            opacity: 0;
+            transition: 0.4s;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay span {
+            color: var(--gold);
+            font-size: 9px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* =====================================================
+           CONTACT
+        ===================================================== */
+
+        .contact {
+            background: var(--black-2);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 80px;
+        }
+
+        .contact-copy h2 {
+            margin-top: 12px;
+            font-family: "Cormorant Garamond", serif;
+            font-size: 65px;
+            line-height: 0.9;
+            font-weight: 500;
+        }
+
+        .contact-copy h2 span {
+            color: var(--gold);
+        }
+
+        .contact-copy > p {
+            margin-top: 25px;
+            color: #888;
+            font-size: 12px;
+            max-width: 470px;
+        }
+
+        .contact-details {
+            margin-top: 35px;
+        }
+
+        .contact-detail {
+            display: flex;
+            gap: 15px;
+            padding: 18px 0;
+            border-bottom: 1px solid #252525;
+        }
+
+        .contact-detail-icon {
+            color: var(--gold);
+            font-size: 16px;
+            width: 30px;
+        }
+
+        .contact-detail small {
+            display: block;
+            color: #666;
+            font-size: 8px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .contact-detail p {
+            margin-top: 3px;
+            font-size: 12px;
+            color: #ccc;
+        }
+
+        .contact-form {
+            padding: 38px;
+            border: 1px solid #292929;
+            background: #0e0e0e;
+        }
+
+        .form-title {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 34px;
+            margin-bottom: 25px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 7px;
+            color: #888;
+            font-size: 8px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            border: 1px solid #292929;
+            background: #111;
+            color: white;
+            outline: none;
+            padding: 13px;
+
+            font-size: 11px;
+
+            transition: 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--gold);
+        }
+
+        .form-group textarea {
+            min-height: 125px;
+            resize: vertical;
+        }
+
+        /* =====================================================
+           GOOGLE MAP
+        ===================================================== */
+
+        .map-section {
+            background: #080808;
+            padding-top: 0;
+        }
+
+        .map-wrapper {
+            height: 430px;
+            position: relative;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .map-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            filter: grayscale(1) invert(0.88) contrast(0.85);
+            opacity: 0.72;
+        }
+
+        .map-overlay {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+
+            background: rgba(10,10,10,0.93);
+            border: 1px solid var(--gold);
+
+            padding: 25px 35px;
+            text-align: center;
+
+            pointer-events: none;
+        }
+
+        .map-overlay strong {
+            display: block;
+            font-family: "Cormorant Garamond", serif;
+            font-size: 30px;
+            color: var(--gold);
+        }
+
+        .map-overlay span {
+            display: block;
+            margin-top: 5px;
+            color: #999;
+            font-size: 8px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+            padding: 70px 0 25px;
+            background: #070707;
+            border-top: 1px solid #1d1d1d;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 50px;
+            padding-bottom: 50px;
+        }
+
+        .footer-brand h2 {
+            font-family: "Cormorant Garamond", serif;
+            color: var(--gold);
+            font-size: 38px;
+            font-weight: 500;
+            letter-spacing: 3px;
+        }
+
+        .footer-brand p {
+            max-width: 380px;
+            margin-top: 15px;
+            color: #777;
+            font-size: 11px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            font-size: 9px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .footer-col a,
+        .footer-col p {
+            display: block;
+            color: #777;
+            font-size: 11px;
+            margin-bottom: 9px;
+            transition: 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            padding-top: 22px;
+            border-top: 1px solid #1d1d1d;
+
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+
+            color: #555;
+            font-size: 9px;
+        }
+
+        /* =====================================================
+           WHATSAPP
+        ===================================================== */
+
+        .whatsapp {
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+            z-index: 4000;
+
+            width: 58px;
+            height: 58px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #25d366;
+            color: white;
+
+            border-radius: 50%;
+
+            font-size: 25px;
+
+            box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+
+            transition: 0.3s;
+        }
+
+        .whatsapp:hover {
+            transform: translateY(-5px) scale(1.05);
+        }
+
+        .whatsapp::before {
+            content: "";
+            position: absolute;
+            inset: -6px;
+            border: 1px solid rgba(37,211,102,0.4);
+            border-radius: 50%;
+            animation: whatsappPulse 2s infinite;
+        }
+
+        @keyframes whatsappPulse {
+            0% {
+                transform: scale(0.9);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1.3);
+                opacity: 0;
+            }
+        }
+
+        /* =====================================================
+           PRODUCT MODAL
+        ===================================================== */
+
+        .modal {
+            position: fixed;
+            inset: 0;
+            z-index: 9000;
+
+            background: rgba(0,0,0,0.88);
+            backdrop-filter: blur(10px);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+
+            opacity: 0;
+            visibility: hidden;
+
+            transition: 0.35s;
+        }
+
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-box {
+            width: min(900px, 100%);
+            max-height: 90vh;
+            overflow-y: auto;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            background: #111;
+            border: 1px solid var(--line);
+
+            transform: translateY(25px);
+            transition: 0.35s;
+        }
+
+        .modal.active .modal-box {
+            transform: translateY(0);
+        }
+
+        .modal-image {
+            min-height: 500px;
+        }
+
+        .modal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-content {
+            padding: 45px;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 18px;
+
+            border: 0;
+            background: transparent;
+            color: #888;
+
+            font-size: 25px;
+        }
+
+        .modal-close:hover {
+            color: var(--gold);
+        }
+
+        .modal-category {
+            color: var(--gold);
+            font-size: 8px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .modal-content h2 {
+            margin: 12px 0;
+            font-family: "Cormorant Garamond", serif;
+            font-size: 48px;
+            line-height: 1;
+            font-weight: 500;
+        }
+
+        .modal-content p {
+            color: #888;
+            font-size: 12px;
+            margin-bottom: 25px;
+        }
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 950px) {
+
+            .nav-links {
+                position: absolute;
+                top: 88px;
+                left: 0;
+                width: 100%;
+
+                padding: 15px 5% 25px;
+
+                background: #0b0b0b;
+                border-bottom: 1px solid var(--line);
+
+                display: none;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                width: 100%;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 14px 0;
+            }
+
+            .menu-btn {
+                display: flex;
+            }
+
+            .intro-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .intro-image img {
+                height: 500px;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 300px 300px 300px;
+            }
+
+            .gallery-item.large {
+                grid-row: span 1;
+            }
+
+            .gallery-item:first-child {
+                grid-column: span 2;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            section {
+                padding: 80px 0;
+            }
+
+            .navbar {
+                height: 75px;
+            }
+
+            .nav-links {
+                top: 75px;
+            }
+
+            .hero {
+                background-position: 62% center;
+            }
+
+            .hero h1 {
+                font-size: 57px;
+            }
+
+            .hero-description {
+                font-size: 12px;
+            }
+
+            .intro-copy h2,
+            .contact-copy h2 {
+                font-size: 48px;
+            }
+
+            .intro-points {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid,
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .catalogue-top {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .product-image {
+                height: 350px;
+            }
+
+            .gallery-grid {
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(4, 300px);
+            }
+
+            .gallery-item:first-child {
+                grid-column: auto;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: auto;
+            }
+
+            .contact-form {
+                padding: 25px;
+            }
+
+            .modal-box {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-image {
+                min-height: 300px;
+                max-height: 350px;
+            }
+
+            .modal-content {
+                padding: 30px;
+            }
+
+            .modal-content h2 {
+                font-size: 40px;
+            }
+
+            .map-overlay {
+                width: 85%;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <!-- =====================================================
+         LOADER
+    ====================================================== -->
+
+    <div class="loader" id="loader">
+
+        <div class="loader-inner">
+
+            <div class="loader-logo">
+                EMPIRE
             </div>
-            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-stone-600">
-                <a href="#home" class="hover:text-amber-700 transition">Home</a>
-                <a href="#about" class="hover:text-amber-700 transition">About Us</a>
-                <a href="#services" class="hover:text-amber-700 transition">Services</a>
-                <a href="#contact" class="bg-amber-700 text-white px-5 py-2.5 rounded-md hover:bg-amber-800 transition shadow-sm">Get a Quote</a>
-            </nav>
+
+            <div class="loader-line"></div>
+
+            <div class="loader-text">
+                Furnitures & Interior Fittings
+            </div>
+
         </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header id="header">
+
+        <nav class="navbar">
+
+            <a href="#home" class="logo">
+
+                <div class="logo-mark">
+                    E
+                </div>
+
+                <div class="logo-text">
+
+                    <strong>EMPIRE</strong>
+
+                    <span>
+                        FURNITURES & INTERIOR FITTINGS
+                    </span>
+
+                </div>
+
+            </a>
+
+
+            <button
+                class="menu-btn"
+                id="menuBtn"
+                aria-label="Open navigation">
+
+                ☰
+
+            </button>
+
+
+            <ul class="nav-links" id="navLinks">
+
+                <li>
+                    <a href="#home">Home</a>
+                </li>
+
+                <li>
+                    <a href="#about">About</a>
+                </li>
+
+                <li>
+                    <a href="#services">Services</a>
+                </li>
+
+                <li>
+                    <a href="#catalogue">Catalogue</a>
+                </li>
+
+                <li>
+                    <a href="#gallery">Projects</a>
+                </li>
+
+                <li>
+                    <a href="#contact" class="nav-cta">
+                        Get a Quote
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="relative bg-stone-900 text-white py-24 lg:py-32 overflow-hidden">
-        <div class="absolute inset-0 opacity-20 bg-[url('https://unsplash.com')] bg-cover bg-center"></div>
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-3xl">
-                <span class="text-amber-500 font-semibold tracking-wider uppercase text-sm block mb-3">Master Carpentry & Design</span>
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6">Empire Furnitures & Interior Fittings</h1>
-                <p class="text-lg sm:text-xl text-stone-300 mb-8 leading-relaxed">Bespoke woodworking, custom-built furniture, and luxury interior fittings crafted to last a lifetime. Transforming your spaces with precision engineering and premium materials.</p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="#contact" class="bg-amber-600 hover:bg-amber-700 text-white font-medium px-8 py-3.5 rounded-md shadow-lg transition">Discuss Your Project</a>
-                    <a href="#services" class="border border-stone-500 hover:border-white text-white font-medium px-8 py-3.5 rounded-md transition">Our Services</a>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center">
-            <div>
-                <span class="text-amber-700 font-semibold uppercase tracking-wider text-sm">Our Heritage</span>
-                <h2 class="text-3xl font-bold tracking-tight text-stone-900 mt-2 mb-6">Exceptional Craftsmanship, Tailored For You</h2>
-                <p class="text-stone-600 mb-4 leading-relaxed">At Empire Furnitures and Interior Fittings, we blend traditional joinery techniques with modern interior innovations. Every piece of furniture and structural fitting we build is engineered for durability, utility, and striking aesthetics.</p>
-                <p class="text-stone-600 leading-relaxed">Whether you are remodeling a premium residential kitchen or fitting out a high-end commercial office space, our commitment to flawless execution ensures your vision comes to life exactly as intended.</p>
-            </div>
-            <div class="grid grid-cols-2 gap-4">
-                <img src="https://unsplash.com" alt="Interior Fitting" class="rounded-lg shadow-md object-cover h-64 w-full">
-                <img src="https://unsplash.com" alt="Carpentry Tooling" class="rounded-lg shadow-md object-cover h-64 w-full mt-8">
-            </div>
-        </div>
-    </section>
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
 
-    <!-- Services Section -->
-    <section id="services" class="py-20 bg-stone-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
-            <span class="text-amber-700 font-semibold uppercase tracking-wider text-sm">Capabilities</span>
-            <h2 class="text-3xl font-bold tracking-tight text-stone-900 mt-2">What We Build</h2>
-        </div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Service 1 -->
-            <div class="bg-white rounded-xl shadow-sm border border-stone-200 overflow-hidden hover:shadow-md transition">
-                <img src="https://unsplash.com" alt="Bespoke Furniture" class="h-48 w-full object-cover">
-                <div class="p-6">
-                    <h3 class="text-xl font-bold text-stone-900 mb-2">Bespoke Furniture</h3>
-                    <p class="text-stone-600 text-sm leading-relaxed">Handcrafted dining tables, custom bed frames, luxury sofas, and standalone cabinetry engineered specifically to match your interior blueprint.</p>
-                </div>
-            </div>
-            <!-- Service 2 -->
-            <div class="bg-white rounded-xl shadow-sm border border-stone-200 overflow-hidden hover:shadow-md transition">
-                <img src="https://unsplash.com" alt="Kitchen Cabinets" class="h-48 w-full object-cover">
-                <div class="p-6">
-                    <h3 class="text-xl font-bold text-stone-900 mb-2">Kitchen & Wardrobe Fittings</h3>
-                    <p class="text-stone-600 text-sm leading-relaxed">Flawless integrated cabinetry, custom closets, modular storage structures, and sleek kitchen installations designed for luxury and performance.</p>
-                </div>
-            </div>
-            <!-- Service 3 -->
-            <div class="bg-white rounded-xl shadow-sm border border-stone-200 overflow-hidden hover:shadow-md transition">
-                <img src="https://unsplash.com" alt="Commercial Fit-outs" class="h-48 w-full object-cover">
-                <div class="p-6">
-                    <h3 class="text-xl font-bold text-stone-900 mb-2">Commercial & Office Fit-Outs</h3>
-                    <p class="text-stone-600 text-sm leading-relaxed">High-durability reception desks, partitions, retail display structures, and executive workspaces customized for brands and corporate identities.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <main>
 
-    <!-- Contact Form Section -->
-    <section id="contact" class="py-20 bg-white">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <span class="text-amber-700 font-semibold uppercase tracking-wider text-sm">Get In Touch</span>
-                <h2 class="text-3xl font-bold tracking-tight text-stone-900 mt-2">Request a Project Consultation</h2>
-                <p class="text-stone-600 mt-2">Have a project or design in mind? Fill out the form below to get a breakdown quote.</p>
+        <section class="hero" id="home">
+
+            <div class="hero-content">
+
+                <div class="eyebrow">
+                    Luxury Furniture & Interiors
+                </div>
+
+                <h1>
+                    Designed for
+                    <em>living.</em>
+                    Crafted for
+                    <em>life.</em>
+                </h1>
+
+                <p class="hero-description">
+
+                    Bespoke furniture and interior fittings created
+                    for people who appreciate exceptional craftsmanship,
+                    refined details and timeless design.
+
+                </p>
+
+                <div class="hero-actions">
+
+                    <a
+                        href="#catalogue"
+                        class="btn btn-gold">
+
+                        Explore Collection
+                        <span>→</span>
+
+                    </a>
+
+                    <a
+                        href="#contact"
+                        class="btn btn-outline">
+
+                        Start Your Project
+
+                    </a>
+
+                </div>
+
             </div>
-            <form onsubmit="event.preventDefault(); alert('Thank you! This form is ready for your brother to connect his real email.');" class="bg-stone-50 border border-stone-200 p-8 rounded-xl shadow-sm grid grid-cols-1 gap-6">
-                <div class="grid sm:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-sm font-medium text-stone-700 mb-1">Your Name</label>
-                        <input type="text" required class="w-full bg-white border border-stone-300 rounded-md px-4 py-2.5 text-stone-900 focus:outline-none focus:ring-2 focus:ring-amber-600 transition">
+
+
+            <div class="hero-scroll">
+
+                <span class="scroll-line"></span>
+
+                Scroll to explore
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             ABOUT
+        ================================================== -->
+
+        <section class="intro" id="about">
+
+            <div class="container">
+
+                <div class="intro-grid">
+
+                    <div class="intro-image reveal">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=90"
+                            alt="Luxury interior">
+
                     </div>
-                    <div>
-                        <label class="block text-sm font-medium text-stone-700 mb-1">Email Address</label>
-                        <input type="email" required class="w-full bg-white border border-stone-300 rounded-md px-4 py-2.5 text-stone-900 focus:outline-none focus:ring-2 focus:ring-amber-600 transition">
+
+
+                    <div class="intro-copy reveal delay-1">
+
+                        <div class="section-label">
+                            The Empire Standard
+                        </div>
+
+                        <h2>
+                            Spaces with
+                            <span>character.</span>
+                        </h2>
+
+                        <p>
+
+                            Empire Furnitures & Interior Fittings
+                            creates furniture and interior solutions
+                            that balance sophisticated aesthetics
+                            with everyday functionality.
+
+                        </p>
+
+                        <p>
+
+                            From a single statement piece to a complete
+                            interior transformation, every project is
+                            approached with precision, attention to detail
+                            and an uncompromising commitment to quality.
+
+                        </p>
+
+
+                        <div class="intro-points">
+
+                            <div class="intro-point">
+
+                                <strong>01</strong>
+
+                                <span>
+                                    Bespoke Craftsmanship
+                                </span>
+
+                            </div>
+
+
+                            <div class="intro-point">
+
+                                <strong>02</strong>
+
+                                <span>
+                                    Premium Finishes
+                                </span>
+
+                            </div>
+
+
+                            <div class="intro-point">
+
+                                <strong>03</strong>
+
+                                <span>
+                                    Tailored Designs
+                                </span>
+
+                            </div>
+
+
+                            <div class="intro-point">
+
+                                <strong>04</strong>
+
+                                <span>
+                                    Complete Fittings
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                        <br>
+
+                        <a
+                            href="#contact"
+                            class="btn btn-gold">
+
+                            Discuss Your Project
+
+                        </a>
+
                     </div>
+
                 </div>
-                <div>
-                    <label class="block text-sm font-medium text-stone-700 mb-1">Service Needed</label>
-                    <select class="w-full bg-white border border-stone-300 rounded-md px-4 py-2.5 text-stone-900 focus:outline-none focus:ring-2 focus:ring-amber-600 transition">
-                        <option>Bespoke Home Furniture</option>
-                        <option>Kitchen Cabinetry & Fittings</option>
-                        <option>Wardrobe & Closet Systems</option>
-                        <option>Commercial Office Fit-Out</option>
-                        <option>Other Custom Carpentry</option>
-                    </select>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SERVICES
+        ================================================== -->
+
+        <section class="services" id="services">
+
+            <div class="container">
+
+                <div class="section-header reveal">
+
+                    <div class="section-label">
+                        What We Create
+                    </div>
+
+                    <h2 class="section-title">
+                        Our Expertise
+                    </h2>
+
+                    <p class="section-description">
+
+                        Complete interior solutions for residential,
+                        office and commercial spaces.
+
+                    </p>
+
                 </div>
-                <div>
-                    <label class="block text-sm font-medium text-stone-700 mb-1">Project Details</label>
-                    <textarea rows="4" required placeholder="Describe what you want us to build..." class="w-full bg-white border border-stone-300 rounded-md px-4 py-2.5 text-stone-900 focus:outline-none focus:ring-2 focus:ring-amber-600 transition"></textarea>
+
+
+                <div class="services-grid">
+
+                    <article class="service reveal">
+
+                        <div class="service-number">
+                            01
+                        </div>
+
+                        <div class="service-icon">
+                            ◇
+                        </div>
+
+                        <h3>
+                            Custom Furniture
+                        </h3>
+
+                        <p>
+
+                            Bespoke sofas, beds, dining tables,
+                            TV units, coffee tables and statement
+                            furniture designed specifically for your space.
+
+                        </p>
+
+                    </article>
+
+
+                    <article class="service reveal delay-1">
+
+                        <div class="service-number">
+                            02
+                        </div>
+
+                        <div class="service-icon">
+                            ▱
+                        </div>
+
+                        <h3>
+                            Kitchen Fittings
+                        </h3>
+
+                        <p>
+
+                            Contemporary kitchens with custom cabinetry,
+                            intelligent storage and refined finishes.
+
+                        </p>
+
+                    </article>
+
+
+                    <article class="service reveal delay-2">
+
+                        <div class="service-number">
+                            03
+                        </div>
+
+                        <div class="service-icon">
+                            □
+                        </div>
+
+                        <h3>
+                            Wardrobes
+                        </h3>
+
+                        <p>
+
+                            Elegant fitted wardrobes and dressing spaces
+                            designed around your lifestyle and available space.
+
+                        </p>
+
+                    </article>
+
+
+                    <article class="service reveal">
+
+                        <div class="service-number">
+                            04
+                        </div>
+
+                        <div class="service-icon">
+                            ⌂
+                        </div>
+
+                        <h3>
+                            Home Interiors
+                        </h3>
+
+                        <p>
+
+                            Complete interior fitting solutions for living
+                            rooms, bedrooms, dining areas and other spaces.
+
+                        </p>
+
+                    </article>
+
+
+                    <article class="service reveal delay-1">
+
+                        <div class="service-number">
+                            05
+                        </div>
+
+                        <div class="service-icon">
+                            ▥
+                        </div>
+
+                        <h3>
+                            Office Interiors
+                        </h3>
+
+                        <p>
+
+                            Executive desks, workstations, reception areas,
+                            storage and complete office furniture solutions.
+
+                        </p>
+
+                    </article>
+
+
+                    <article class="service reveal delay-2">
+
+                        <div class="service-number">
+                            06
+                        </div>
+
+                        <div class="service-icon">
+                            ✦
+                        </div>
+
+                        <h3>
+                            Commercial Spaces
+                        </h3>
+
+                        <p>
+
+                            Furniture and interior fittings for hospitality,
+                            retail, restaurants and other commercial environments.
+
+                        </p>
+
+                    </article>
+
                 </div>
-                <button type="submit" class="w-full bg-amber-700 hover:bg-amber-800 text-white font-semibold py-3 px-4 rounded-md transition shadow-md">Submit Request</button>
-            </form>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             PRODUCT CATALOGUE
+        ================================================== -->
+
+        <section class="catalogue" id="catalogue">
+
+            <div class="container">
+
+                <div class="catalogue-top">
+
+                    <div class="section-header reveal">
+
+                        <div class="section-label">
+                            The Collection
+                        </div>
+
+                        <h2 class="section-title">
+                            Product Catalogue
+                        </h2>
+
+                    </div>
+
+
+                    <div class="filters reveal">
+
+                        <button
+                            class="filter-btn active"
+                            data-filter="all">
+
+                            All
+
+                        </button>
+
+                        <button
+                            class="filter-btn"
+                            data-filter="living">
+
+                            Living Room
+
+                        </button>
+
+                        <button
+                            class="filter-btn"
+                            data-filter="bedroom">
+
+                            Bedroom
+
+                        </button>
+
+                        <button
+                            class="filter-btn"
+                            data-filter="kitchen">
+
+                            Kitchen
+
+                        </button>
+
+                        <button
+                            class="filter-btn"
+                            data-filter="office">
+
+                            Office
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="products-grid" id="productsGrid">
+
+                    <!-- PRODUCT 1 -->
+
+                    <article
+                        class="product-card reveal"
+                        data-category="living"
+                        data-name="Signature Sofa"
+                        data-description="A sophisticated statement sofa designed for contemporary living spaces. Custom upholstery and dimensions available."
+                        data-image="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=90">
+
+                        <div class="product-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=90"
+                                alt="Signature luxury sofa">
+
+                            <span class="product-category">
+                                Living Room
+                            </span>
+
+                        </div>
+
+                        <div class="product-info">
+
+                            <h3>
+                                Signature Sofa
+                            </h3>
+
+                            <p>
+                                Bespoke luxury seating
+                            </p>
+
+                            <div class="product-bottom">
+
+                                <span class="product-price">
+                                    PRICE ON REQUEST
+                                </span>
+
+                                <button
+                                    class="product-btn"
+                                    onclick="openProduct(this)">
+
+                                    View Details →
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- PRODUCT 2 -->
+
+                    <article
+                        class="product-card reveal delay-1"
+                        data-category="bedroom"
+                        data-name="Empire Bed"
+                        data-description="A premium bedroom centrepiece with a refined upholstered finish. Available in custom sizes and fabrics."
+                        data-image="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=90">
+
+                        <div class="product-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=90"
+                                alt="Luxury Empire bed">
+
+                            <span class="product-category">
+                                Bedroom
+                            </span>
+
+                        </div>
+
+                        <div class="product-info">
+
+                            <h3>
+                                Empire Bed
+                            </h3>
+
+                            <p>
+                                Contemporary bedroom luxury
+                            </p>
+
+                            <div class="product-bottom">
+
+                                <span class="product-price">
+                                    PRICE ON REQUEST
+                                </span>
+
+                                <button
+                                    class="product-btn"
+                                    onclick="openProduct(this)">
+
+                                    View Details →
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- PRODUCT 3 -->
+
+                    <article
+                        class="product-card reveal delay-2"
+                        data-category="kitchen"
+                        data-name="Modern Kitchen"
+                        data-description="Custom kitchen cabinetry combining elegant finishes with practical storage and modern functionality."
+                        data-image="https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=1200&q=90">
+
+                        <div class="product-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=1200&q=90"
+                                alt="Modern fitted kitchen">
+
+                            <span class="product-category">
+                                Kitchen
+                            </span>
+
+                        </div>
+
+                        <div class="product-info">
+
+                            <h3>
+                                Modern Kitchen
+                            </h3>
+
+                            <p>
+                                Bespoke kitchen cabinetry
+                            </p>
+
+                            <div class="product-bottom">
+
+                                <span class="product-price">
+                                    PRICE ON REQUEST
+                                </span>
+
+                                <button
+                                    class="product-btn"
+                                    onclick="openProduct(this)">
+
+                                    View Details →
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- PRODUCT 4 -->
+
+                    <article
+                        class="product-card reveal"
+                        data-category="bedroom"
+                        data-name="Fitted Wardrobe"
+                        data-description="Floor-to-ceiling wardrobe systems designed to maximise storage while maintaining a clean architectural appearance."
+                        data-image="https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=1200&q=90">
+
+                        <div class="product-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=1200&q=90"
+                                alt="Fitted wardrobe">
+
+                            <span class="product-category">
+                                Bedroom
+                            </span>
+
+                        </div>
+
+                        <div class="product-info">
+
+                            <h3>
+                                Fitted Wardrobe
+                            </h3>
+
+                            <p>
+                                Intelligent storage solutions
+                            </p>
+
+                            <div class="product-bottom">
+
+                                <span class="product-price">
+                                    PRICE ON REQUEST
+                                </span>
+
+                                <button
+                                    class="product-btn"
+                                    onclick="openProduct(this)">
+
+                                    View Details →
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- PRODUCT 5 -->
+
+                    <article
+                        class="product-card reveal delay-1"
+                        data-category="office"
+                        data-name="Executive Desk"
+                        data-description="A refined executive desk designed for modern professional environments, with custom dimensions and finishes."
+                        data-image="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=90">
+
+                        <div class="product-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=90"
+                                alt="Executive office furniture">
+
+                            <span class="product-category">
+                                Office
+                            </span>
+
+                        </div>
+
+                        <div class="product-info">
+
+                            <h3>
+                                Executive Desk
+                            </h3>
+
+                            <p>
+                                Premium office furniture
+                            </p>
+
+                            <div class="product-bottom">
+
+                                <span class="product-price">
+                                    PRICE ON REQUEST
+                                </span>
+
+                                <button
+                                    class="product-btn"
+                                    onclick="openProduct(this)">
+
+                                    View Details →
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- PRODUCT 6 -->
+
+                    <article
+                        class="product-card reveal delay-2"
+                        data-category="living"
+                        data-name="Designer TV Unit"
+                        data-description="A contemporary entertainment unit designed to integrate your television, storage and decorative elements."
+                        data-image="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1200&q=90">
+
+                        <div class="product-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1200&q=90"
+                                alt="Designer TV unit">
+
+                            <span class="product-category">
+                                Living Room
+                            </span>
+
+                        </div>
+
+                        <div class="product-info">
+
+                            <h3>
+                                Designer TV Unit
+                            </h3>
+
+                            <p>
+                                Modern entertainment furniture
+                            </p>
+
+                            <div class="product-bottom">
+
+                                <span class="product-price">
+                                    PRICE ON REQUEST
+                                </span>
+
+                                <button
+                                    class="product-btn"
+                                    onclick="openProduct(this)">
+
+                                    View Details →
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             FEATURE
+        ================================================== -->
+
+        <section class="feature-banner">
+
+            <div class="container">
+
+                <div class="feature-content reveal">
+
+                    <div class="section-label">
+                        Your Space. Your Signature.
+                    </div>
+
+                    <h2>
+                        Interiors made
+                        <span style="color:#c9a35d;">
+                            personal.
+                        </span>
+                    </h2>
+
+                    <p>
+
+                        We don't believe in one-size-fits-all interiors.
+                        Every Empire project begins with understanding
+                        your space, your taste and how you live or work.
+
+                    </p>
+
+                    <br>
+
+                    <a
+                        href="#contact"
+                        class="btn btn-gold">
+
+                        Create Your Interior
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             GALLERY
+        ================================================== -->
+
+        <section class="gallery" id="gallery">
+
+            <div class="container">
+
+                <div class="section-header center reveal">
+
+                    <div class="section-label">
+                        Selected Work
+                    </div>
+
+                    <h2 class="section-title">
+                        Spaces We Love
+                    </h2>
+
+                    <p class="section-description">
+
+                        A selection of interiors representing the
+                        aesthetic direction and craftsmanship behind Empire.
+
+                    </p>
+
+                </div>
+
+
+                <div class="gallery-grid">
+
+                    <div class="gallery-item large reveal">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1400&q=90"
+                            alt="Luxury living interior">
+
+                        <div class="gallery-overlay">
+                            <span>
+                                Residential Interior
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="gallery-item reveal delay-1">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1000&q=90"
+                            alt="Luxury kitchen">
+
+                        <div class="gallery-overlay">
+                            <span>
+                                Bespoke Kitchen
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="gallery-item reveal delay-2">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1615529182904-14819c35db37?auto=format&fit=crop&w=1000&q=90"
+                            alt="Bedroom interior">
+
+                        <div class="gallery-overlay">
+                            <span>
+                                Bedroom Interior
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="gallery-item reveal delay-1">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1000&q=90"
+                            alt="Office interior">
+
+                        <div class="gallery-overlay">
+                            <span>
+                                Office Interior
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="gallery-item reveal delay-2">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1000&q=90"
+                            alt="Luxury furniture">
+
+                        <div class="gallery-overlay">
+                            <span>
+                                Custom Furniture
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             CONTACT
+        ================================================== -->
+
+        <section class="contact" id="contact">
+
+            <div class="container">
+
+                <div class="contact-grid">
+
+                    <div class="contact-copy reveal">
+
+                        <div class="section-label">
+                            Let's Work Together
+                        </div>
+
+                        <h2>
+                            Tell us about
+                            your <span>space.</span>
+                        </h2>
+
+                        <p>
+
+                            Whether you are furnishing a new home,
+                            renovating an existing space or fitting out
+                            a commercial property, we'd love to hear about
+                            your project.
+
+                        </p>
+
+
+                        <div class="contact-details">
+
+                            <div class="contact-detail">
+
+                                <div class="contact-detail-icon">
+                                    ☎
+                                </div>
+
+                                <div>
+
+                                    <small>
+                                        Phone / WhatsApp
+                                    </small>
+
+                                    <p>
+                                        0113 131 001
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="contact-detail">
+
+                                <div class="contact-detail-icon">
+                                    @
+                                </div>
+
+                                <div>
+
+                                    <small>
+                                        Email
+                                    </small>
+
+                                    <p>
+                                        austingakuna@gmail.com
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="contact-detail">
+
+                                <div class="contact-detail-icon">
+                                    ◇
+                                </div>
+
+                                <div>
+
+                                    <small>
+                                        Service Area
+                                    </small>
+
+                                    <p>
+                                        Furniture & Interior Fittings
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="contact-form reveal delay-1">
+
+                        <div class="form-title">
+                            Request a Quote
+                        </div>
+
+                        <form id="quoteForm">
+
+                            <div class="form-grid">
+
+                                <div class="form-group">
+
+                                    <label for="customerName">
+                                        Full Name
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="customerName"
+                                        placeholder="Your name"
+                                        required>
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label for="customerPhone">
+                                        Phone Number
+                                    </label>
+
+                                    <input
+                                        type="tel"
+                                        id="customerPhone"
+                                        placeholder="Your phone"
+                                        required>
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label for="service">
+                                        Service
+                                    </label>
+
+                                    <select id="service">
+
+                                        <option>
+                                            Select a service
+                                        </option>
+
+                                        <option>
+                                            Custom Furniture
+                                        </option>
+
+                                        <option>
+                                            Kitchen Fittings
+                                        </option>
+
+                                        <option>
+                                            Wardrobes
+                                        </option>
+
+                                        <option>
+                                            Home Interiors
+                                        </option>
+
+                                        <option>
+                                            Office Interiors
+                                        </option>
+
+                                        <option>
+                                            Commercial Interiors
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label for="budget">
+                                        Project Type
+                                    </label>
+
+                                    <select id="budget">
+
+                                        <option>
+                                            Select project type
+                                        </option>
+
+                                        <option>
+                                            Residential
+                                        </option>
+
+                                        <option>
+                                            Office
+                                        </option>
+
+                                        <option>
+                                            Commercial
+                                        </option>
+
+                                        <option>
+                                            Other
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <div class="form-group full">
+
+                                    <label for="projectMessage">
+                                        Tell Us About Your Project
+                                    </label>
+
+                                    <textarea
+                                        id="projectMessage"
+                                        placeholder="Describe what you would like us to create..."
+                                        required></textarea>
+
+                                </div>
+
+                            </div>
+
+
+                            <button
+                                type="submit"
+                                class="btn btn-gold"
+                                style="width:100%;">
+
+                                Send via WhatsApp →
+
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             GOOGLE MAP
+        ================================================== -->
+
+        <section class="map-section">
+
+            <div class="map-wrapper">
+
+                <!--
+                    This currently shows Nairobi because no business
+                    address was provided.
+
+                    Replace "Nairobi, Kenya" in the iframe URL with the
+                    actual showroom/workshop location when you are ready.
+                -->
+
+                <iframe
+                    src="https://www.google.com/maps?q=Nairobi%2C%20Kenya&output=embed"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Empire Furnitures location map">
+                </iframe>
+
+
+                <div class="map-overlay">
+
+                    <strong>
+                        Empire
+                    </strong>
+
+                    <span>
+                        Location details coming soon
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
+
+        <div class="container">
+
+            <div class="footer-grid">
+
+                <div class="footer-brand">
+
+                    <h2>
+                        EMPIRE
+                    </h2>
+
+                    <p>
+
+                        Furnitures & Interior Fittings.
+                        Creating refined spaces through thoughtful
+                        design, quality materials and expert craftsmanship.
+
+                    </p>
+
+                </div>
+
+
+                <div class="footer-col">
+
+                    <h4>
+                        Explore
+                    </h4>
+
+                    <a href="#home">
+                        Home
+                    </a>
+
+                    <a href="#about">
+                        About
+                    </a>
+
+                    <a href="#services">
+                        Services
+                    </a>
+
+                    <a href="#catalogue">
+                        Catalogue
+                    </a>
+
+                    <a href="#gallery">
+                        Projects
+                    </a>
+
+                </div>
+
+
+                <div class="footer-col">
+
+                    <h4>
+                        Contact
+                    </h4>
+
+                    <a href="tel:0113131001">
+                        0113 131 001
+                    </a>
+
+                    <a href="mailto:austingakuna@gmail.com">
+                        austingakuna@gmail.com
+                    </a>
+
+                    <a
+                        href="https://wa.me/254113131001"
+                        target="_blank">
+
+                        WhatsApp Us
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <span>
+                    © 2026 Empire Furnitures & Interior Fittings.
+                    All rights reserved.
+                </span>
+
+                <span>
+                    Crafted for exceptional spaces.
+                </span>
+
+            </div>
+
         </div>
+
+    </footer>
+
+
+    <!-- =====================================================
+         WHATSAPP FLOATING BUTTON
+    ====================================================== -->
+
+    <a
+        class="whatsapp"
+        href="https://wa.me/254113131001"
+        target="_blank"
+        aria-label="Chat with Empire Furnitures on WhatsApp">
+
+        ☎
+
+    </a>
+
+
+    <!-- =====================================================
+         PRODUCT MODAL
+    ====================================================== -->
+
+    <div
+        class="modal"
+        id="productModal"
+        aria-hidden="true">
+
+        <div class="modal-box">
+
+            <div class="modal-image">
+
+                <img
+                    id="modalImage"
+                    src=""
+                    alt="Product">
+
+            </div>
+
+
+            <div class="modal-content">
+
+                <button
+                    class="modal-close"
+                    onclick="closeProduct()"
+                    aria-label="Close">
+
+                    ×
+
+                </button>
+
+
+                <div
+                    class="modal-category"
+                    id="modalCategory">
+
+                </div>
+
+
+                <h2 id="modalTitle">
+                </h2>
+
+
+                <p id="modalDescription">
+                </p>
+
+
+                <a
+                    id="modalWhatsApp"
+                    class="btn btn-gold"
+                    target="_blank">
+
+                    Enquire on WhatsApp →
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+
+        /* =====================================================
+           LOADER
+        ===================================================== */
+
+        window.addEventListener("load", function () {
+
+            setTimeout(function () {
+
+                document
+                    .getElementById("loader")
+                    .classList.add("hidden");
+
+            }, 800);
+
+        });
+
+
+        /* =====================================================
+           HEADER SCROLL EFFECT
+        ===================================================== */
+
+        const header =
+            document.getElementById("header");
+
+        window.addEventListener("scroll", function () {
+
+            if (window.scrollY > 40) {
+
+                header.classList.add("scrolled");
+
+            } else {
+
+                header.classList.remove("scrolled");
+
+            }
+
+        });
+
+
+        /* =====================================================
+           MOBILE NAVIGATION
+        ===================================================== */
+
+        const menuBtn =
+            document.getElementById("menuBtn");
+
+        const navLinks =
+            document.getElementById("navLinks");
+
+
+        menuBtn.addEventListener("click", function () {
+
+            navLinks.classList.toggle("active");
+
+            if (navLinks.classList.contains("active")) {
+
+                menuBtn.textContent = "×";
+
+            } else {
+
+                menuBtn.textContent = "☰";
+
+            }
+
+        });
+
+
+        document
+            .querySelectorAll(".nav-links a")
+            .forEach(function (link) {
+
+                link.addEventListener("click", function () {
+
+                    navLinks.classList.remove("active");
+
+                    menuBtn.textContent = "☰";
+
+                });
+
+            });
+
+
+        /* =====================================================
+           REVEAL ANIMATIONS
+        ===================================================== */
+
+        const revealElements =
+            document.querySelectorAll(".reveal");
+
+
+        const revealObserver =
+            new IntersectionObserver(
+
+                function (entries) {
+
+                    entries.forEach(function (entry) {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.classList.add("active");
+
+                            revealObserver.unobserve(entry.target);
+
+                        }
+
+                    });
+
+                },
+
+                {
+                    threshold: 0.12
+                }
+
+            );
+
+
+        revealElements.forEach(function (element) {
+
+            revealObserver.observe(element);
+
+        });
+
+
+        /* =====================================================
+           PRODUCT FILTER
+        ===================================================== */
+
+        const filterButtons =
+            document.querySelectorAll(".filter-btn");
+
+        const productCards =
+            document.querySelectorAll(".product-card");
+
+
+        filterButtons.forEach(function (button) {
+
+            button.addEventListener("click", function () {
+
+                filterButtons.forEach(function (btn) {
+
+                    btn.classList.remove("active");
+
+                });
+
+                button.classList.add("active");
+
+
+                const filter =
+                    button.dataset.filter;
+
+
+                productCards.forEach(function (card) {
+
+                    const category =
+                        card.dataset.category;
+
+
+                    if (
+                        filter === "all" ||
+                        category === filter
+                    ) {
+
+                        card.style.display = "";
+
+                        setTimeout(function () {
+
+                            card.style.opacity = "1";
+                            card.style.transform = "translateY(0)";
+
+                        }, 30);
+
+                    } else {
+
+                        card.style.opacity = "0";
+                        card.style.transform = "translateY(15px)";
+
+                        setTimeout(function () {
+
+                            card.style.display = "none";
+
+                        }, 250);
+
+                    }
+
+                });
+
+            });
+
+        });
+
+
+        /* =====================================================
+           PRODUCT MODAL
+        ===================================================== */
+
+        const modal =
+            document.getElementById("productModal");
+
+        const modalImage =
+            document.getElementById("modalImage");
+
+        const modalTitle =
+            document.getElementById("modalTitle");
+
+        const modalDescription =
+            document.getElementById("modalDescription");
+
+        const modalCategory =
+            document.getElementById("modalCategory");
+
+        const modalWhatsApp =
+            document.getElementById("modalWhatsApp");
+
+
+        function openProduct(button) {
+
+            const card =
+                button.closest(".product-card");
+
+
+            const name =
+                card.dataset.name;
+
+            const description =
+                card.dataset.description;
+
+            const image =
+                card.dataset.image;
+
+            const category =
+                card.querySelector(".product-category")
+                    .textContent.trim();
+
+
+            modalImage.src = image;
+
+            modalImage.alt = name;
+
+            modalTitle.textContent = name;
+
+            modalDescription.textContent = description;
+
+            modalCategory.textContent = category;
+
+
+            const whatsappMessage =
+                encodeURIComponent(
+                    "Hello Empire Furnitures & Interior Fittings. I am interested in the " +
+                    name +
+                    ". Please provide more information and a quotation."
+                );
+
+
+            modalWhatsApp.href =
+                "https://wa.me/254113131001?text=" +
+                whatsappMessage;
+
+
+            modal.classList.add("active");
+
+            modal.setAttribute(
+                "aria-hidden",
+                "false"
+            );
+
+            document.body.classList.add("modal-open");
+
+        }
+
+
+        function closeProduct() {
+
+            modal.classList.remove("active");
+
+            modal.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+            document.body.classList.remove("modal-open");
+
+        }
+
+
+        modal.addEventListener("click", function (event) {
+
+            if (event.target === modal) {
+
+                closeProduct();
+
+            }
+
+        });
+
+
+        document.addEventListener("keydown", function (event) {
+
+            if (event.key === "Escape") {
+
+                closeProduct();
+
+            }
+
+        });
+
+
+        /* =====================================================
+           WHATSAPP QUOTE FORM
+        ===================================================== */
+
+        const quoteForm =
+            document.getElementById("quoteForm");
+
+
+        quoteForm.addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+
+            const name =
+                document
+                    .getElementById("customerName")
+                    .value.trim();
+
+
+            const phone =
+                document
+                    .getElementById("customerPhone")
+                    .value.trim();
+
+
+            const service =
+                document
+                    .getElementById("service")
+                    .value;
+
+
+            const projectType =
+                document
+                    .getElementById("budget")
+                    .value;
+
+
+            const message =
+                document
+                    .getElementById("projectMessage")
+                    .value.trim();
+
+
+            const whatsappText =
+
+                "Hello Empire Furnitures & Interior Fittings.%0A%0A" +
+
+                "*NEW PROJECT ENQUIRY*%0A%0A" +
+
+                "Name: " +
+                encodeURIComponent(name) +
+                "%0A" +
+
+                "Phone: " +
+                encodeURIComponent(phone) +
+                "%0A" +
+
+                "Service: " +
+                encodeURIComponent(service) +
+                "%0A" +
+
+                "Project Type: " +
+                encodeURIComponent(projectType) +
+                "%0A%0A" +
+
+                "Project Details:%0A" +
+                encodeURIComponent(message);
+
+
+            window.open(
+                "https://wa.me/254113131001?text=" +
+                whatsappText,
+                "_blank"
+            );
+
+        });
+
+
+        /* =====================================================
+           SMOOTH SCROLL
+        ===================================================== */
+
+        document
+            .querySelectorAll('a[href^="#"]')
+            .forEach(function (anchor) {
+
+                anchor.addEventListener("click", function (event) {
+
+                    const target =
+                        document.querySelector(
+                            this.getAttribute("href")
+                        );
+
+
+                    if (target) {
+
+                        event.preventDefault();
+
+                        target.scrollIntoView({
+                            behavior: "smooth"
+                        });
+
+                    }
+
+                });
+
+            });
+
+    </script>
+
+</body>
+</html>
+```
