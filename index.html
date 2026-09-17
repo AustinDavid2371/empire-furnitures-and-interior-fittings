@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Empire Furnitures and Interior Fittings | Premium Carpentry</title>
-    <script src="https://jsdelivr.net"></script>
+    <!-- Fixed Styling Link -->
+    <script src="https://tailwindcss.com"></script>
+    <!-- Icons Link -->
     <link rel="stylesheet" href="https://cloudflare.com">
 </head>
 <body class="bg-stone-50 text-stone-800 font-sans antialiased">
 
     <!-- Header / Navigation -->
-    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur shadow-sm border-b border-stone-100">
+    <header class="sticky top-0 z-50 bg-white shadow-sm border-b border-stone-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <div class="flex items-center gap-2">
                 <i class="fa-solid fa-couch text-amber-700 text-2xl"></i>
@@ -35,7 +37,7 @@
                 <p class="text-lg sm:text-xl text-stone-300 mb-8 leading-relaxed">Bespoke woodworking, custom-built furniture, and luxury interior fittings crafted to last a lifetime. Transforming your spaces with precision engineering and premium materials.</p>
                 <div class="flex flex-wrap gap-4">
                     <a href="#contact" class="bg-amber-600 hover:bg-amber-700 text-white font-medium px-8 py-3.5 rounded-md shadow-lg transition">Discuss Your Project</a>
-                    <a href="#services" class="border border-stone-500 hover:border-white text-white font-medium px-8 py-3.5 rounded-md transition backdrop-blur-sm">Our Services</a>
+                    <a href="#services" class="border border-stone-500 hover:border-white text-white font-medium px-8 py-3.5 rounded-md transition">Our Services</a>
                 </div>
             </div>
         </div>
@@ -65,7 +67,7 @@
         </div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Service 1 -->
-            <div class="bg-white rounded-xl shadow-sm border border-stone-200/60 overflow-hidden hover:shadow-md transition">
+            <div class="bg-white rounded-xl shadow-sm border border-stone-200 overflow-hidden hover:shadow-md transition">
                 <img src="https://unsplash.com" alt="Bespoke Furniture" class="h-48 w-full object-cover">
                 <div class="p-6">
                     <h3 class="text-xl font-bold text-stone-900 mb-2">Bespoke Furniture</h3>
@@ -73,7 +75,7 @@
                 </div>
             </div>
             <!-- Service 2 -->
-            <div class="bg-white rounded-xl shadow-sm border border-stone-200/60 overflow-hidden hover:shadow-md transition">
+            <div class="bg-white rounded-xl shadow-sm border border-stone-200 overflow-hidden hover:shadow-md transition">
                 <img src="https://unsplash.com" alt="Kitchen Cabinets" class="h-48 w-full object-cover">
                 <div class="p-6">
                     <h3 class="text-xl font-bold text-stone-900 mb-2">Kitchen & Wardrobe Fittings</h3>
@@ -81,7 +83,7 @@
                 </div>
             </div>
             <!-- Service 3 -->
-            <div class="bg-white rounded-xl shadow-sm border border-stone-200/60 overflow-hidden hover:shadow-md transition">
+            <div class="bg-white rounded-xl shadow-sm border border-stone-200 overflow-hidden hover:shadow-md transition">
                 <img src="https://unsplash.com" alt="Commercial Fit-outs" class="h-48 w-full object-cover">
                 <div class="p-6">
                     <h3 class="text-xl font-bold text-stone-900 mb-2">Commercial & Office Fit-Outs</h3>
@@ -103,16 +105,16 @@
                 <div class="grid sm:grid-cols-2 gap-6">
                     <div>
                         <label class="block text-sm font-medium text-stone-700 mb-1">Your Name</label>
-                        <input type="text" required class="w-full bg-white border border-stone-300 rounded-md px-4 py-2.5 text-stone-900 focus:outline-none focus:ring-2 focus:ring-amber-600/20 focus:border-amber-600 transition">
+                        <input type="text" required class="w-full bg-white border border-stone-300 rounded-md px-4 py-2.5 text-stone-900 focus:outline-none focus:ring-2 focus:ring-amber-600 transition">
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-stone-700 mb-1">Email Address</label>
-                        <input type="email" required class="w-full bg-white border border-stone-300 rounded-md px-4 py-2.5 text-stone-900 focus:outline-none focus:ring-2 focus:ring-amber-600/20 focus:border-amber-600 transition">
+                        <input type="email" required class="w-full bg-white border border-stone-300 rounded-md px-4 py-2.5 text-stone-900 focus:outline-none focus:ring-2 focus:ring-amber-600 transition">
                     </div>
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-stone-700 mb-1">Service Needed</label>
-                    <select class="w-full bg-white border border-stone-300 rounded-md px-4 py-2.5 text-stone-900 focus:outline-none focus:ring-2 focus:ring-amber-600/20 focus:border-amber-600 transition">
+                    <select class="w-full bg-white border border-stone-300 rounded-md px-4 py-2.5 text-stone-900 focus:outline-none focus:ring-2 focus:ring-amber-600 transition">
                         <option>Bespoke Home Furniture</option>
                         <option>Kitchen Cabinetry & Fittings</option>
                         <option>Wardrobe & Closet Systems</option>
@@ -122,5 +124,10 @@
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-stone-700 mb-1">Project Details</label>
-                    <textarea rows="4" required placeholder="Describe what you want us to build..." class="w-full bg-white border border-stone-300 rounded-md px-4 py-2.5 text-stone-900 focus:outline-none focus:ring-2 focus:ring-amber-600/20 focus:border-amber-600 transition"></textarea>
+                    <textarea rows="4" required placeholder="Describe what you want us to build..." class="w-full bg-white border border-stone-300 rounded-md px-4 py-2.5 text-stone-900 focus:outline-none focus:ring-2 focus:ring-amber-600 transition"></textarea>
                 </div>
+                <button type="submit" class="w-full bg-amber-700 hover:bg-amber-800 text-white font-semibold py-3 px-4 rounded-md transition shadow-md">Submit Request</button>
+            </form>
+        </div>
+    </section>
+
